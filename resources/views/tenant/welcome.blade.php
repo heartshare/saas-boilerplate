@@ -36,7 +36,7 @@
                 </div>
                 <div class="flex justify-center">
                     <div class="mt-8 text-gray-800 text-sm">
-                        This is a sample landing page.
+                        The id of the current tenant is {{ tenant('id') }}
                     </div>
                 </div>
             </div>

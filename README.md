@@ -37,6 +37,7 @@ The user enters his details:
 A user enters his domain. Based on the domain, we find the correct tenant and redirect the user to the tenant's application's login screen.
 
 ## Project Structure
+I recommend this structure
 
 ### Controllers
 - `App\Http\Controllers\Central`
