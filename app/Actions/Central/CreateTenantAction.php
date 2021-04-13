@@ -2,7 +2,7 @@
 
 namespace App\Actions\Central;
 
-use App\Http\Requests\Central\CreateTenantRequest;
+use App\Http\Requests\Central\Backend\Tenant\StoreTenantRequest;
 use App\Models\Central\Tenant\Tenant;
 use Illuminate\Support\Facades\Hash;
 use Lorisleiva\Actions\Concerns\AsAction;
@@ -29,7 +29,7 @@ class CreateTenantAction
         return $tenant;
     }
 
-    public function asController(CreateTenantRequest $request)
+    public function asController(StoreTenantRequest $request)
     {
         $this->handle([
             'name' => $request->name,
