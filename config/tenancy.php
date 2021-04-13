@@ -32,6 +32,8 @@ return [
         Stancl\Tenancy\Bootstrappers\FilesystemTenancyBootstrapper::class,
         Stancl\Tenancy\Bootstrappers\QueueTenancyBootstrapper::class,
         // Stancl\Tenancy\Bootstrappers\RedisTenancyBootstrapper::class, // Note: phpredis is needed
+        App\Bootstrappers\LivewireBootstrapper::class,
+        App\Bootstrappers\GuardBootstrapper::class
     ],
 
     /**
@@ -101,7 +103,7 @@ return [
         'disks' => [
             'local',
             'public',
-            // 's3',
+             's3',
         ],
 
         /**

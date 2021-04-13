@@ -12,7 +12,7 @@
                     </div>
                 </div>
                 <div class="mt-4 md:mt-0 w-full md:w-2/3 pl-0 md:pl-2">
-                    @livewire('tenant.update-profile-information')
+                    @livewire('tenant.profile.update-profile-information')
                 </div>
             </div>
 
@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="mt-4 md:mt-0 w-full md:w-2/3 pl-0 md:pl-2">
-                    @livewire('tenant.update-password')
+                    @livewire('tenant.profile.update-password')
                 </div>
             </div>
 
@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 <div class="mt-4 md:mt-0 w-full md:w-2/3 pl-0 md:pl-2">
-                    @livewire('tenant.logout-other-browser-sessions')
+                    @livewire('tenant.profile.logout-other-browser-sessions')
                 </div>
             </div>
         </div>

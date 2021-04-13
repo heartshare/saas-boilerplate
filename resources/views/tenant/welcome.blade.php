@@ -36,7 +36,7 @@
                 </div>
                 <div class="flex justify-center">
                     <div class="mt-8 text-gray-800 text-sm">
-                        The id of the current tenant is {{ tenant('id') }}
+                        The id of the current tenant is {{ tenant('id') }} {{ config()->get('auth.defaults.guard') }}
                     </div>
                 </div>
             </div>

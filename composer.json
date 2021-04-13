@@ -6,17 +6,24 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "akaunting/laravel-money": "^1.2",
+        "akaunting/laravel-setting": "^1.2",
+        "aws/aws-sdk-php": "^3.176",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
+        "guzzlehttp/guzzle": "^7.3",
         "jenssegers/agent": "^2.6",
         "laravel/cashier": "^12.11",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
+        "league/flysystem-aws-s3-v3": "~1.0",
+        "league/flysystem-cached-adapter": "~1.0",
         "livewire/livewire": "^2.4",
         "lorisleiva/laravel-actions": "^2.1",
         "rappasoft/lockout": "^3.0",
-        "stancl/tenancy": "^3.4"
+        "spatie/laravel-permission": "^4.0",
+        "stancl/tenancy": "^3.4",
+        "wildbit/swiftmailer-postmark": "^3.3"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

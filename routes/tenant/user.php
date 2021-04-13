@@ -1,7 +1,7 @@
 <?php
 
 use App\Actions\Tenant\DownloadInvoiceAction;
-use App\Http\Controllers\Tenant\User\DashboardController;
+use App\Http\Controllers\Tenant\DashboardController;
 use App\Http\Controllers\Tenant\User\SettingsController;
 use Illuminate\Support\Facades\Route;
 

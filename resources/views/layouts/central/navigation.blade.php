@@ -5,22 +5,58 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('tenant.user.dashboard') }}">
-                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
+                    <a href="{{ route('central.dashboard') }}">
+                        <x-central.application-logo class="block h-10 w-auto fill-current text-gray-600" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('tenant.user.dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-central.nav-link :href="route('central.dashboard')" :active="request()->routeIs('central.dashboard')">
                         {{ __('Dashboard') }}
-                    </x-nav-link>
+                    </x-central.nav-link>
+
+                    <div class="hidden sm:flex sm:items-center sm:ml-6">
+                        <x-central.dropdown align="right" width="48">
+                            <x-slot name="trigger">
+                                <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                                    <div>{{ __('Users') }}</div>
+                                    <div class="ml-1">
+                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </button>
+                            </x-slot>
+                            <x-slot name="content">
+                                <x-central.dropdown-link :href="route('central.user.index')">
+                                    {{ __('Users') }}
+                                </x-central.dropdown-link>
+                                <x-central.dropdown-link :href="route('central.role.index')">
+                                    {{ __('Roles') }}
+                                </x-central.dropdown-link>
+                            </x-slot>
+                        </x-central.dropdown>
+                    </div>
+                    <x-central.nav-link :href="route('central.tenants.index')" :active="request()->routeIs('central.tenants.index')">
+                        {{ __('Tenants') }}
+                    </x-central.nav-link>
+                    @can('stripe')
+                    <x-central.nav-link :href="route('central.stripe.dashboard')" :active="request()->routeIs('central.stripe.dashboard')">
+                        {{ __('Stripe') }}
+                    </x-central.nav-link>
+                    @endcan
+                    @can('settings')
+                    <x-central.nav-link :href="route('central.settings')" :active="request()->routeIs('central.settings')">
+                        {{ __('Settings') }}
+                    </x-central.nav-link>
+                    @endcan
                 </div>
             </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
-                <x-dropdown align="right" width="48">
+                <x-central.dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
                             <div>{{ Auth::user()->name }}</div>
@@ -34,18 +70,28 @@
                     </x-slot>
 
                     <x-slot name="content">
+                        <div class="block px-4 py-2 text-xs text-gray-400">
+                            {{ __('Manage Account') }}
+                        </div>
+
+                        <x-central.dropdown-link :href="route('central.profile')">
+                            {{ __('Profile') }}
+                        </x-central.dropdown-link>
+
+                        <div class="border-t border-gray-100"></div>
+
                         <!-- Authentication -->
-                        <form method="POST" action="{{ route('tenant.logout') }}">
+                        <form method="POST" action="{{ route('central.admin.logout') }}">
                             @csrf
 
-                            <x-dropdown-link :href="route('tenant.logout')"
+                            <x-central.dropdown-link :href="route('central.admin.logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 {{ __('Log out') }}
-                            </x-dropdown-link>
+                            </x-central.dropdown-link>
                         </form>
                     </x-slot>
-                </x-dropdown>
+                </x-central.dropdown>
             </div>
 
             <!-- Hamburger -->
@@ -63,9 +109,15 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('tenant.user.dashboard')" :active="request()->routeIs('dashboard')">
+            <x-central.responsive-nav-link :href="route('central.dashboard')" :active="request()->routeIs('central.dashboard')">
                 {{ __('Dashboard') }}
-            </x-responsive-nav-link>
+            </x-central.responsive-nav-link>
+            <x-central.responsive-nav-link :href="route('central.tenants.index')" :active="request()->routeIs('central.tenants.index')">
+                {{ __('Tenants') }}
+            </x-central.responsive-nav-link>
+            <x-central.responsive-nav-link :href="route('central.stripe.dashboard')" :active="request()->routeIs('central.stripe.dashboard')">
+                {{ __('Stripe') }}
+            </x-central.responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
@@ -84,15 +136,19 @@
             </div>
 
             <div class="mt-3 space-y-1">
+                <x-central.responsive-nav-link :href="route('central.profile')">
+                    {{ __('Profile') }}
+                </x-central.responsive-nav-link>
+
                 <!-- Authentication -->
-                <form method="POST" action="{{ route('tenant.logout') }}">
+                <form method="POST" action="{{ route('central.admin.logout') }}">
                     @csrf
 
-                    <x-responsive-nav-link :href="route('tenant.logout')"
+                    <x-central.responsive-nav-link :href="route('central.admin.logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         {{ __('Log out') }}
-                    </x-responsive-nav-link>
+                    </x-central.responsive-nav-link>
                 </form>
             </div>
         </div>

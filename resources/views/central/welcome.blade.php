@@ -43,7 +43,7 @@
 
                 <div class="flex justify-center">
                     <div class="mt-8 text-gray-800 text-sm">
-                        This is a sample landing page.
+                        This is a sample landing page. {{ config()->get('auth.defaults.guard') }}
                     </div>
                 </div>
             </div>

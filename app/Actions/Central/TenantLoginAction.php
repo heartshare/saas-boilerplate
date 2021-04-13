@@ -2,7 +2,7 @@
 
 namespace App\Actions\Central;
 
-use App\Http\Requests\Central\TenantLoginRequest;
+use App\Http\Requests\Central\Frontend\TenantLoginRequest;
 use App\Models\Central\Domain\Domain;
 use Lorisleiva\Actions\Concerns\AsAction;
 

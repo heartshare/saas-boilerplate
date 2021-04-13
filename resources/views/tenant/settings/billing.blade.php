@@ -12,12 +12,12 @@
                         </div>
                     </div>
                     <div class="mt-4 md:mt-0 w-full md:w-2/3 pl-0 md:pl-2 sm:px-4">
-                        @livewire('tenant.upcoming-payment')
-                        @livewire('tenant.billing-address')
-                        @livewire('tenant.subscription-banner')
-                        @livewire('tenant.invoices')
-                        @livewire('tenant.subscription-plan')
-                        @livewire('tenant.payment-method')
+                        @livewire('tenant.billing.upcoming-payment')
+                        @livewire('tenant.billing.billing-address')
+                        @livewire('tenant.billing.subscription-banner')
+                        @livewire('tenant.billing.invoices')
+                        @livewire('tenant.billing.subscription-plan')
+                        @livewire('tenant.billing.payment-method')
                     </div>
                 </div>
             </div>

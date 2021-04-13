@@ -1,5 +1,7 @@
 <?php
 
+use Stripe\Charge;
+
 if (! function_exists('include_route_files')) {
 
     /**
@@ -24,5 +26,14 @@ if (! function_exists('include_route_files')) {
         } catch (Exception $e) {
             echo $e->getMessage();
         }
+    }
+}
+
+
+if (! function_exists('is_refunded')) {
+    function is_refunded($id)
+    {
+        $charge = (Charge::retrieve(['id' => $id, 'expand' => ['balance_transaction']], ['api_key' => config('services.stripe.secret')]))->toArray();
+        return $charge['amount_refunded'];
     }
 }
