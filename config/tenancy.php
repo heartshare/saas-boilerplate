@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Models\Central\Domain\Domain;
 use App\Models\Central\Tenant\Tenant;
+use Illuminate\Support\Str;
 
 return [
     'tenant_model' => Tenant::class,
@@ -17,7 +18,8 @@ return [
      * Only relevant if you're using the domain or subdomain identification middleware.
      */
     'central_domains' => [
-        env('CENTRAL_DOMAIN')
+        env('CENTRAL_DOMAIN'),
+        'www.'.env('CENTRAL_DOMAIN')
     ],
 
     /**
